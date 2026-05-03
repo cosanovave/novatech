@@ -696,16 +696,18 @@ section {
 
 .contact-inner { max-width: 660px; margin: 0 auto; }
 
-.contact-form {
+.contact-cta-wrap {
+  text-align: center;
+  padding: 56px 40px;
   background: linear-gradient(160deg, rgba(168,85,247,0.06), rgba(59,130,246,0.03));
   border: 1px solid rgba(168,85,247,0.2);
   border-radius: 20px;
-  padding: 44px 40px;
   position: relative;
   overflow: hidden;
+  margin-bottom: 20px;
 }
 
-.contact-form::before {
+.contact-cta-wrap::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
@@ -713,72 +715,39 @@ section {
   background: var(--grad);
 }
 
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  margin-bottom: 18px;
-}
-
-.form-group label {
-  font-size: 0.72rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  background: rgba(8,8,24,0.8);
-  border: 1px solid rgba(168,85,247,0.2);
-  border-radius: 8px;
-  padding: 13px 16px;
-  color: var(--text);
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 1rem;
-  transition: border-color 0.3s, box-shadow 0.3s;
-  outline: none;
-  min-height: 48px;
-  width: 100%;
-  -webkit-appearance: none;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: var(--purple);
-  box-shadow: 0 0 0 3px rgba(168,85,247,0.12);
-}
-
-.form-group select option { background: var(--dark2); }
-.form-group textarea { resize: vertical; min-height: 110px; }
-
-.form-submit {
-  width: 100%;
-  padding: 16px;
+.btn-cta-form {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 48px;
   background: linear-gradient(135deg, var(--purple), var(--blue));
   color: white;
-  border: none;
-  border-radius: 8px;
+  text-decoration: none;
+  border-radius: 10px;
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  cursor: pointer;
-  transition: opacity 0.3s, transform 0.3s;
-  box-shadow: 0 0 40px rgba(168,85,247,0.3);
-  min-height: 52px;
+  box-shadow: 0 0 50px rgba(168,85,247,0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+  min-height: 56px;
 }
 
-.form-submit:active { opacity: 0.85; transform: scale(0.98); }
+@media (hover: hover) {
+  .btn-cta-form:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 70px rgba(168,85,247,0.55);
+  }
+}
+
+.btn-cta-form:active { transform: scale(0.97); }
+
+.cta-note {
+  margin-top: 18px;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
 
 .contact-alt {
   text-align: center;
@@ -851,27 +820,6 @@ footer {
 .stagger-5 { transition-delay: 0.40s; }
 .stagger-6 { transition-delay: 0.48s; }
 
-/* ===== TOAST ===== */
-.toast {
-  position: fixed;
-  bottom: 24px; right: 16px; left: 16px;
-  max-width: 380px;
-  margin: 0 auto;
-  background: linear-gradient(135deg, var(--purple), var(--blue));
-  color: white;
-  padding: 14px 24px;
-  border-radius: 10px;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 0.72rem;
-  letter-spacing: 1px;
-  z-index: 999;
-  text-align: center;
-  transform: translateY(120px);
-  opacity: 0;
-  transition: all 0.4s;
-  box-shadow: 0 8px 32px rgba(168,85,247,0.4);
-}
-.toast.show { transform: translateY(0); opacity: 1; }
 
 /* ===========================
    RESPONSIVE — TABLET
@@ -920,12 +868,9 @@ footer {
   .process-steps::before { display: none; }
   .step { max-width: 320px; width: 100%; }
 
-  /* Contact form */
-  .contact-form { padding: 28px 20px; }
-  .form-row { grid-template-columns: 1fr; }
-
-  /* Toast */
-  .toast { left: 12px; right: 12px; bottom: 16px; }
+  /* Contact CTA */
+  .contact-cta-wrap { padding: 40px 20px; }
+  .btn-cta-form { width: 100%; max-width: 320px; padding: 16px 24px; font-size: 0.72rem; }
 
   /* Hide scroll hint on short screens */
   .hero-scroll-hint { display: none; }
@@ -1272,50 +1217,11 @@ footer {
     <p class="section-sub reveal stagger-2">Cuéntanos sobre tu proyecto y te enviamos una cotización personalizada sin costo.</p>
   </div>
   <div class="contact-inner">
-    <div class="contact-form reveal">
-      <form id="contact-form">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Nombre</label>
-            <input type="text" placeholder="Tu nombre" required>
-          </div>
-          <div class="form-group">
-            <label>Empresa</label>
-            <input type="text" placeholder="Tu empresa (opcional)">
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" placeholder="tu@email.com" required>
-        </div>
-        <div class="form-group">
-          <label>Servicio de Interés</label>
-          <select>
-            <option value="">Selecciona un servicio</option>
-            <optgroup label="Desarrollo Web">
-              <option>Landing Page</option>
-              <option>Web Corporativa</option>
-              <option>Portafolio</option>
-              <option>E-commerce</option>
-            </optgroup>
-            <optgroup label="Marketing Digital">
-              <option>Redes Sociales</option>
-              <option>Publicidad Pagada (Ads)</option>
-              <option>SEO</option>
-              <option>Email Marketing</option>
-              <option>Branding & Estrategia</option>
-              <option>Copywriting</option>
-              <option>Plan completo de marketing</option>
-            </optgroup>
-            <option>Varios servicios / Paquete completo</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Cuéntanos sobre tu proyecto</label>
-          <textarea placeholder="¿Qué necesitas? ¿Tienes algún referente o idea?"></textarea>
-        </div>
-        <button type="submit" class="form-submit">Solicitar Cotización Gratis</button>
-      </form>
+    <div class="contact-cta-wrap reveal">
+      <a href="https://forms.gle/HocKEWAMzb8uhS7y8" target="_blank" rel="noopener noreferrer" class="btn-cta-form">
+        Solicitar Cotización Gratis
+      </a>
+      <p class="cta-note">Completa el formulario y te respondemos en menos de 24 horas.</p>
     </div>
     <div class="contact-alt">
       También puedes escribirnos a <a href="mailto:cosanova.ve@gmail.com">cosanova.ve@gmail.com</a>
@@ -1330,7 +1236,7 @@ footer {
   <div class="footer-copy">© 2026 NOVA TECH by COSA NOVA · Todos los derechos reservados</div>
 </footer>
 
-<div class="toast" id="toast">¡Mensaje enviado! Te contactamos pronto.</div>
+
 
 <script>
 // ===== PARTICLES (fewer on mobile for performance) =====
@@ -1444,15 +1350,6 @@ window.addEventListener('scroll', () => {
     window.scrollY > 50 ? 'rgba(8,8,24,0.97)' : 'rgba(8,8,24,0.85)';
 }, { passive: true });
 
-// ===== FORM SUBMIT =====
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const toast = document.getElementById('toast');
-  toast.classList.add('show');
-  this.reset();
-  setTimeout(() => toast.classList.remove('show'), 4000);
-  window.location.href = 'mailto:cosanova.ve@gmail.com?subject=Solicitud%20de%20cotización%20-%20NOVA%20TECH&body=Hola%2C%20me%20interesa%20conocer%20sus%20servicios.';
-});
 </script>
 </body>
 </html>
