@@ -63,26 +63,22 @@ nav {
 }
 
 .nav-logo {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 900;
-  font-size: 1.1rem;
-  background: var(--grad);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: 2px;
   cursor: pointer;
   z-index: 201;
+  display: flex;
+  align-items: center;
 }
 
-.nav-logo span {
-  display: block;
-  font-size: 0.5rem;
-  letter-spacing: 4px;
-  color: var(--muted);
-  -webkit-text-fill-color: var(--muted);
-  font-weight: 400;
-  margin-top: -4px;
+.nav-logo img {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(168,85,247,0.5));
+  transition: filter 0.3s;
+}
+
+.nav-logo img:hover {
+  filter: drop-shadow(0 0 16px rgba(168,85,247,0.8));
 }
 
 .nav-links {
@@ -1067,8 +1063,7 @@ footer {
 <!-- NAVBAR -->
 <nav id="navbar">
   <div class="nav-logo" onclick="scrollTo({top:0,behavior:'smooth'})">
-    NOVA TECH
-    <span>by COSA NOVA</span>
+    <img src="assets/logo.png" alt="NOVA TECH by COSA NOVA">
   </div>
   <ul class="nav-links">
     <li><a href="#web-services">Web</a></li>
