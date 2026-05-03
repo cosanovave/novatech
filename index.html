@@ -318,6 +318,108 @@ nav {
   50% { transform: translateX(-50%) translateY(8px); }
 }
 
+/* ===== HERO FLOATING NOTIFS ===== */
+.hero-notifs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.h-notif {
+  position: absolute;
+  background: rgba(13,13,43,0.9);
+  border: 1px solid rgba(168,85,247,0.28);
+  border-radius: 14px;
+  padding: 12px 16px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  box-shadow: 0 8px 36px rgba(0,0,0,0.45), 0 0 0 1px rgba(168,85,247,0.07);
+  animation: notifIn 0.7s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
+
+.h-notif.n1 { top: 18%; left: 3%;  animation-delay: 0.9s; }
+.h-notif.n2 { top: 32%; right: 3%; animation-delay: 1.5s; }
+.h-notif.n3 { bottom: 26%; left: 4%; animation-delay: 2.0s; }
+.h-notif.n4 { bottom: 20%; right: 3%; animation-delay: 2.5s; }
+.h-notif.n5 { top: 60%; left: 2%;  animation-delay: 3.0s; }
+
+@keyframes notifIn {
+  0%   { opacity: 0; transform: translateY(22px) scale(0.88); }
+  100% { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+.notif-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+.notif-icon.ni-green  { background: rgba(34,197,94,0.18);  border: 1px solid rgba(34,197,94,0.3);  }
+.notif-icon.ni-purple { background: rgba(168,85,247,0.18); border: 1px solid rgba(168,85,247,0.3); }
+.notif-icon.ni-blue   { background: rgba(59,130,246,0.18); border: 1px solid rgba(59,130,246,0.3); }
+.notif-icon.ni-pink   { background: rgba(236,72,153,0.18); border: 1px solid rgba(236,72,153,0.3); }
+.notif-icon.ni-yellow { background: rgba(234,179,8,0.18);  border: 1px solid rgba(234,179,8,0.3);  }
+
+.notif-text .n-label { font-size: 0.58rem; color: #64748b; letter-spacing: 1.5px; text-transform: uppercase; }
+.notif-text .n-val   { font-family: 'Orbitron', sans-serif; font-size: 0.75rem; font-weight: 700; color: white; margin-top: 3px; }
+.notif-text .n-val .pos  { color: #4ade80; }
+.notif-text .n-val .hi   { color: #c4b5fd; }
+.notif-text .n-val .yel  { color: #fbbf24; }
+
+.n-pulse {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  flex-shrink: 0;
+  animation: pulseDot 1.8s ease-in-out infinite;
+}
+@keyframes pulseDot {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(74,222,128,0.6); }
+  50%       { box-shadow: 0 0 0 6px rgba(74,222,128,0);   }
+}
+
+/* ===== TICKER ===== */
+.ticker-wrap {
+  position: relative; z-index: 1;
+  background: rgba(168,85,247,0.035);
+  border-top: 1px solid rgba(168,85,247,0.1);
+  border-bottom: 1px solid rgba(168,85,247,0.1);
+  padding: 10px 0;
+  overflow: hidden;
+}
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: tickerScroll 40s linear infinite;
+}
+.ticker-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 0 30px;
+  font-size: 0.68rem;
+  letter-spacing: 1px;
+  color: #94a3b8;
+  white-space: nowrap;
+  border-right: 1px solid rgba(168,85,247,0.1);
+}
+.t-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.t-dot.tg { background: #4ade80; }
+.t-dot.tp { background: var(--purple); }
+.t-dot.tb { background: var(--blue); }
+.t-dot.tk { background: var(--pink); }
+.t-dot.ty { background: #fbbf24; }
+@keyframes tickerScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
 /* ===== STATS ===== */
 #stats {
   position: relative;
@@ -821,6 +923,12 @@ footer {
 .stagger-6 { transition-delay: 0.48s; }
 
 
+/* Notifs flotantes solo en pantallas anchas */
+@media (max-width: 1100px) {
+  .h-notif.n1, .h-notif.n5 { left: 0.5%; }
+  .h-notif.n2, .h-notif.n4 { right: 0.5%; }
+}
+
 /* ===========================
    RESPONSIVE — TABLET
 =========================== */
@@ -872,6 +980,9 @@ footer {
   .contact-cta-wrap { padding: 40px 20px; }
   .btn-cta-form { width: 100%; max-width: 320px; padding: 16px 24px; font-size: 0.72rem; }
 
+  /* Notifs flotantes — ocultas en mobile */
+  .hero-notifs { display: none; }
+
   /* Hide scroll hint on short screens */
   .hero-scroll-hint { display: none; }
 }
@@ -917,6 +1028,53 @@ footer {
 <!-- HERO -->
 <section id="hero">
   <div class="hero-glow"></div>
+
+  <!-- Notificaciones flotantes de métricas -->
+  <div class="hero-notifs" aria-hidden="true">
+
+    <div class="h-notif n1">
+      <div class="notif-icon ni-green">📈</div>
+      <div class="notif-text">
+        <div class="n-label">Auditoría SEO</div>
+        <div class="n-val"><span class="pos">98</span>/100 — Óptimo</div>
+      </div>
+      <div class="n-pulse"></div>
+    </div>
+
+    <div class="h-notif n2">
+      <div class="notif-icon ni-purple">🎯</div>
+      <div class="notif-text">
+        <div class="n-label">Conversión Ads</div>
+        <div class="n-val"><span class="pos">+247%</span> este mes</div>
+      </div>
+    </div>
+
+    <div class="h-notif n3">
+      <div class="notif-icon ni-blue">🌐</div>
+      <div class="notif-text">
+        <div class="n-label">Web entregada</div>
+        <div class="n-val">E-commerce <span class="hi">✓ activo</span></div>
+      </div>
+    </div>
+
+    <div class="h-notif n4">
+      <div class="notif-icon ni-pink">💰</div>
+      <div class="notif-text">
+        <div class="n-label">ROI Campaña</div>
+        <div class="n-val"><span class="pos">4.2×</span> retorno</div>
+      </div>
+    </div>
+
+    <div class="h-notif n5">
+      <div class="notif-icon ni-yellow">⚡</div>
+      <div class="notif-text">
+        <div class="n-label">Velocidad Web</div>
+        <div class="n-val">Carga <span class="yel">0.8s</span> — A+</div>
+      </div>
+    </div>
+
+  </div>
+
   <div class="hero-content">
     <div class="hero-badge reveal">Desarrollo Web & Marketing Digital</div>
     <h1 class="hero-title reveal stagger-1">
@@ -936,6 +1094,33 @@ footer {
     scroll
   </div>
 </section>
+
+<!-- TICKER DE ACTIVIDAD -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <div class="ticker-item"><span class="t-dot tg"></span> Web corporativa entregada · Estudio Creativo</div>
+    <div class="ticker-item"><span class="t-dot tp"></span> Auditoría SEO completada · Score 98/100</div>
+    <div class="ticker-item"><span class="t-dot tb"></span> Campaña Meta Ads activa · +312% alcance</div>
+    <div class="ticker-item"><span class="t-dot tk"></span> E-commerce lanzado · 48 pedidos primer día</div>
+    <div class="ticker-item"><span class="t-dot ty"></span> Velocidad web optimizada · 0.8s carga</div>
+    <div class="ticker-item"><span class="t-dot tg"></span> Email marketing · 44% tasa de apertura</div>
+    <div class="ticker-item"><span class="t-dot tp"></span> Landing Page · Conversión +180%</div>
+    <div class="ticker-item"><span class="t-dot tb"></span> Google Ads · ROI 4.8× en 30 días</div>
+    <div class="ticker-item"><span class="t-dot tk"></span> Nuevo cliente · Branding & Estrategia 360°</div>
+    <div class="ticker-item"><span class="t-dot ty"></span> Portafolio premium · Entregado en 5 días</div>
+    <!-- duplicado para loop continuo -->
+    <div class="ticker-item"><span class="t-dot tg"></span> Web corporativa entregada · Estudio Creativo</div>
+    <div class="ticker-item"><span class="t-dot tp"></span> Auditoría SEO completada · Score 98/100</div>
+    <div class="ticker-item"><span class="t-dot tb"></span> Campaña Meta Ads activa · +312% alcance</div>
+    <div class="ticker-item"><span class="t-dot tk"></span> E-commerce lanzado · 48 pedidos primer día</div>
+    <div class="ticker-item"><span class="t-dot ty"></span> Velocidad web optimizada · 0.8s carga</div>
+    <div class="ticker-item"><span class="t-dot tg"></span> Email marketing · 44% tasa de apertura</div>
+    <div class="ticker-item"><span class="t-dot tp"></span> Landing Page · Conversión +180%</div>
+    <div class="ticker-item"><span class="t-dot tb"></span> Google Ads · ROI 4.8× en 30 días</div>
+    <div class="ticker-item"><span class="t-dot tk"></span> Nuevo cliente · Branding & Estrategia 360°</div>
+    <div class="ticker-item"><span class="t-dot ty"></span> Portafolio premium · Entregado en 5 días</div>
+  </div>
+</div>
 
 <!-- STATS -->
 <div id="stats">
