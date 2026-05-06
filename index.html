@@ -958,6 +958,116 @@ footer {
   border-top: 1px solid rgba(168,85,247,0.07);
 }
 
+/* ===== PRIVACY MODAL ===== */
+.priv-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(5,5,16,0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.priv-modal-overlay.open { display: flex; }
+.priv-modal {
+  background: #0d0d2b;
+  border: 1px solid rgba(168,85,247,0.25);
+  border-radius: 16px;
+  max-width: 720px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 44px 48px;
+  position: relative;
+  color: var(--text);
+  box-shadow: 0 0 60px rgba(168,85,247,0.15);
+  scrollbar-width: thin;
+  scrollbar-color: var(--purple) #0d0d2b;
+}
+.priv-modal::-webkit-scrollbar { width: 4px; }
+.priv-modal::-webkit-scrollbar-thumb { background: var(--purple); border-radius: 2px; }
+.priv-modal-close {
+  position: absolute;
+  top: 16px; right: 20px;
+  background: rgba(168,85,247,0.1);
+  border: 1px solid rgba(168,85,247,0.2);
+  color: var(--muted);
+  font-size: 1.3rem;
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+  line-height: 1;
+}
+.priv-modal-close:hover { background: rgba(168,85,247,0.25); color: #fff; }
+.priv-modal h2 {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 4px;
+  padding-right: 40px;
+}
+.priv-modal .priv-subtitle {
+  font-size: 0.78rem;
+  color: rgba(168,85,247,0.65);
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+}
+.priv-modal hr {
+  border: none;
+  border-top: 1px solid rgba(168,85,247,0.15);
+  margin: 18px 0;
+}
+.priv-modal h3 {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--purple);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 22px 0 8px;
+}
+.priv-modal p, .priv-modal li {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.75;
+}
+.priv-modal ul, .priv-modal ol {
+  padding-left: 18px;
+  margin: 6px 0;
+}
+.priv-modal li { margin-bottom: 5px; }
+.priv-modal a { color: var(--purple); text-decoration: underline; }
+.priv-modal strong { color: var(--text); }
+.priv-scope-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 10px 0 18px;
+}
+.priv-scope-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(168,85,247,0.35);
+  color: var(--purple);
+  background: rgba(168,85,247,0.08);
+}
+@media (max-width: 640px) {
+  .priv-modal { padding: 28px 20px; }
+  .priv-modal h2 { font-size: 0.9rem; }
+}
+
 /* ===== SCROLL ANIMATIONS ===== */
 .reveal {
   opacity: 0;
@@ -1499,11 +1609,122 @@ footer {
       </a>
     </div>
 
-    <div class="footer-copy">© 2026 NOVA TECH by COSA NOVA · Todos los derechos reservados</div>
+    <div class="footer-copy">
+      © 2026 NOVA TECH by COSA NOVA · Todos los derechos reservados
+      &nbsp;·&nbsp;
+      <button onclick="document.getElementById('privModal').classList.add('open')" style="background:none;border:none;color:#4a3f6b;font-size:0.68rem;letter-spacing:1px;cursor:pointer;font-family:'Rajdhani',sans-serif;text-decoration:underline;transition:color 0.2s;" onmouseover="this.style.color='#a855f7'" onmouseout="this.style.color='#4a3f6b'">Política de Privacidad</button>
+    </div>
   </div>
 </footer>
 
 
+
+<!-- ===== POLÍTICA DE PRIVACIDAD MODAL ===== -->
+<div class="priv-modal-overlay" id="privModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="priv-modal">
+    <button class="priv-modal-close" onclick="document.getElementById('privModal').classList.remove('open')">×</button>
+    <h2>Política de Privacidad</h2>
+    <p class="priv-subtitle">NOVA TECH by COMERCIALIZADORA COSA NOVA, C.A. · Última actualización: mayo 2026</p>
+
+    <div class="priv-scope-badges">
+      <span class="priv-scope-badge">🌎 Aplicación Global</span>
+      <span class="priv-scope-badge">🇪🇺 RGPD — Unión Europea</span>
+      <span class="priv-scope-badge">🇧🇷 LGPD — Brasil</span>
+      <span class="priv-scope-badge">🇻🇪 Venezuela</span>
+      <span class="priv-scope-badge">🌐 Latinoamérica & Resto del Mundo</span>
+    </div>
+
+    <p>En <strong>NOVA TECH by COMERCIALIZADORA COSA NOVA, C.A.</strong> nos comprometemos a proteger la privacidad y los datos personales de todas las personas con quienes interactuamos, independientemente del país donde residan. Esta Política de Privacidad describe qué datos recopilamos, cómo los usamos, con quién los compartimos y cuáles son sus derechos, en cumplimiento de los marcos normativos internacionales aplicables.</p>
+
+    <hr>
+
+    <h3>1. Quiénes somos</h3>
+    <ul>
+      <li><strong>Razón social:</strong> Comercializadora Cosa Nova, C.A.</li>
+      <li><strong>RIF:</strong> J-503999632</li>
+      <li><strong>Nombre comercial:</strong> NOVA TECH by COSA NOVA</li>
+      <li><strong>Actividad:</strong> Desarrollo web, marketing digital y servicios tecnológicos</li>
+      <li><strong>País de constitución:</strong> Venezuela</li>
+      <li><strong>Correo de contacto:</strong> <a href="mailto:novatech.cosanova@gmail.com">novatech.cosanova@gmail.com</a></li>
+      <li><strong>Teléfono:</strong> +57 300 188 5210</li>
+    </ul>
+
+    <h3>2. Datos que recopilamos</h3>
+    <p>Recopilamos datos personales únicamente cuando son necesarios para prestar nuestros servicios. Esto incluye:</p>
+    <ul>
+      <li>Nombre completo y/o razón social del cliente</li>
+      <li>Correo electrónico y número de teléfono</li>
+      <li>Información sobre el proyecto o negocio (sector, objetivos, referencias)</li>
+      <li>Datos de navegación en nuestra página web (a través de cookies técnicas)</li>
+      <li>Cualquier información adicional que el cliente nos proporcione voluntariamente</li>
+    </ul>
+    <p>No recopilamos datos sensibles (salud, religión, orientación sexual, datos biométricos, etc.) salvo que sea estrictamente necesario y con consentimiento explícito.</p>
+
+    <h3>3. Finalidad del tratamiento</h3>
+    <p>Los datos recopilados se utilizan exclusivamente para:</p>
+    <ul>
+      <li>Elaborar y enviar presupuestos y propuestas de servicio</li>
+      <li>Ejecutar los proyectos web y digitales contratados</li>
+      <li>Comunicarnos con el cliente durante y después del proyecto</li>
+      <li>Cumplir obligaciones legales y contractuales</li>
+      <li>Enviar comunicaciones comerciales relacionadas con nuestros servicios, solo con consentimiento previo</li>
+    </ul>
+
+    <h3>4. Base legal del tratamiento</h3>
+    <p>El tratamiento de sus datos se basa en:</p>
+    <ul>
+      <li><strong>Ejecución de un contrato:</strong> Para la prestación de los servicios solicitados</li>
+      <li><strong>Consentimiento:</strong> Para el envío de comunicaciones comerciales y el uso de cookies no esenciales</li>
+      <li><strong>Interés legítimo:</strong> Para el mantenimiento de la relación comercial y la mejora de nuestros servicios</li>
+      <li><strong>Obligación legal:</strong> Para el cumplimiento de normativas aplicables</li>
+    </ul>
+    <p>Para clientes en la <strong>Unión Europea</strong>, el tratamiento se realiza conforme al <strong>Reglamento (UE) 2016/679 (RGPD)</strong>. Para clientes en <strong>Brasil</strong>, conforme a la <strong>Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018)</strong>. Para el resto del mundo, nos regimos por los principios internacionales de privacidad reconocidos (OCDE, APEC Privacy Framework).</p>
+
+    <h3>5. ¿Quién tiene acceso a sus datos?</h3>
+    <p>Con carácter general, únicamente el equipo interno de NOVA TECH que necesite acceso para prestar el servicio tendrá conocimiento de su información. Podemos compartir datos con:</p>
+    <ul>
+      <li><strong>Proveedores de herramientas y plataformas:</strong> Google (Google Forms, Google Workspace), servicios de hosting, herramientas de diseño. Todos bajo sus propias políticas de privacidad y acuerdos de protección de datos.</li>
+      <li><strong>El cliente:</strong> Le informamos en todo momento de los datos que manejamos en su nombre</li>
+      <li><strong>Autoridades competentes:</strong> Solo cuando exista obligación legal</li>
+    </ul>
+    <p>No vendemos, alquilamos ni cedemos datos personales a terceros con fines comerciales.</p>
+
+    <h3>6. Transferencias internacionales de datos</h3>
+    <p>Por la naturaleza de nuestros servicios, los datos pueden ser procesados en servidores ubicados fuera del país del cliente. En todos los casos, aplicamos medidas contractuales y técnicas adecuadas para garantizar un nivel de protección equivalente al exigido por la normativa de origen del cliente. Para clientes europeos, nos comprometemos a utilizar únicamente herramientas que cuenten con las garantías exigidas por el RGPD (cláusulas contractuales tipo, certificaciones, etc.).</p>
+
+    <h3>7. ¿Cuánto tiempo conservamos sus datos?</h3>
+    <p>Conservamos sus datos durante el tiempo necesario para cumplir con la finalidad para la que fueron recogidos y mientras exista una relación comercial activa. Una vez finalizada, los datos serán eliminados o anonimizados, salvo que la ley exija su conservación por un período determinado.</p>
+
+    <h3>8. Sus derechos</h3>
+    <p>Según la normativa aplicable en su país, usted tiene derecho a:</p>
+    <ul>
+      <li><strong>Acceso:</strong> Conocer qué datos tenemos sobre usted</li>
+      <li><strong>Rectificación:</strong> Corregir datos inexactos o incompletos</li>
+      <li><strong>Supresión / Olvido:</strong> Solicitar la eliminación de sus datos</li>
+      <li><strong>Oposición:</strong> Oponerse al tratamiento de sus datos</li>
+      <li><strong>Portabilidad:</strong> Recibir sus datos en formato estructurado</li>
+      <li><strong>Limitación del tratamiento:</strong> Restringir el uso de sus datos en determinadas circunstancias</li>
+      <li><strong>Retirada del consentimiento:</strong> En cualquier momento, sin efecto retroactivo</li>
+    </ul>
+    <p>Para ejercer cualquiera de estos derechos, escríbanos a: <a href="mailto:novatech.cosanova@gmail.com">novatech.cosanova@gmail.com</a></p>
+    <p>Si considera que sus derechos no han sido atendidos, puede acudir a la autoridad de protección de datos de su país (<strong>AEPD</strong> en España, <strong>ANPD</strong> en Brasil, <strong>CNIL</strong> en Francia, etc.).</p>
+
+    <h3>9. Seguridad de los datos</h3>
+    <p>Aplicamos medidas técnicas y organizativas apropiadas para proteger sus datos frente a accesos no autorizados, pérdida, destrucción o alteración accidental. Esto incluye comunicaciones cifradas (HTTPS), acceso restringido a los datos y uso de herramientas con estándares de seguridad reconocidos internacionalmente.</p>
+
+    <h3>10. Cookies</h3>
+    <p>Nuestra página web utiliza únicamente cookies técnicas necesarias para su funcionamiento. No utilizamos cookies de seguimiento ni publicidad comportamental. Si en el futuro incorporáramos otro tipo de cookies, actualizaremos esta política e informaremos previamente al usuario.</p>
+
+    <h3>11. Menores de edad</h3>
+    <p>Nuestros servicios están dirigidos exclusivamente a empresas y profesionales adultos. No recopilamos conscientemente datos de menores de 16 años. Si detectamos que hemos recibido datos de un menor, los eliminaremos de inmediato.</p>
+
+    <h3>12. Actualizaciones de esta política</h3>
+    <p>Esta Política de Privacidad puede ser actualizada periódicamente para reflejar cambios en nuestra práctica o en la normativa aplicable. La versión vigente siempre estará disponible en esta página web. Le recomendamos revisarla regularmente.</p>
+
+    <hr>
+    <p style="font-size:0.78rem;color:#4a3f6b;text-align:center">NOVA TECH by COSA NOVA · <a href="mailto:novatech.cosanova@gmail.com" style="color:#4a3f6b">novatech.cosanova@gmail.com</a> · +57 300 188 5210</p>
+  </div>
+</div>
 
 <script>
 // ===== PARTICLES (fewer on mobile for performance) =====
