@@ -777,8 +777,15 @@ footer { background:var(--dark); padding:56px 5% 28px; }
 </section>
 
 <!-- ABOUT -->
-<section id="nosotros" class="section" style="background:var(--white);border-top:1px solid var(--border)">
-  <div class="section-inner">
+<section id="nosotros" class="section" style="background:var(--white);border-top:1px solid var(--border);position:relative;overflow:hidden">
+
+  <!-- Foto Kevin — fondo izquierda -->
+  <div style="position:absolute;left:0;top:0;bottom:0;width:280px;background-image:url('assets/kevin.png');background-size:cover;background-position:center top;opacity:0.55;pointer-events:none;mask-image:linear-gradient(to right,rgba(0,0,0,0.8),transparent);-webkit-mask-image:linear-gradient(to right,rgba(0,0,0,0.8),transparent)"></div>
+
+  <!-- Foto Alfredo — fondo derecha -->
+  <div style="position:absolute;right:0;top:0;bottom:0;width:280px;background-image:url('assets/alfredo.png');background-size:cover;background-position:center top;opacity:0.55;pointer-events:none;mask-image:linear-gradient(to left,rgba(0,0,0,0.8),transparent);-webkit-mask-image:linear-gradient(to left,rgba(0,0,0,0.8),transparent)"></div>
+
+  <div class="section-inner" style="position:relative;z-index:1">
     <div class="section-header">
       <div class="section-tag reveal">El equipo</div>
       <h2 class="section-title reveal stagger-1">Dos amigos. Una visión. NOVATECH.</h2>
@@ -790,8 +797,6 @@ footer { background:var(--dark); padding:56px 5% 28px; }
 
       <!-- Kevin -->
       <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:32px 28px;display:flex;gap:22px;align-items:flex-start;transition:all 0.3s;position:relative;overflow:hidden" onmouseover="this.style.borderColor='var(--accent)';this.style.background='#faf8ff'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--bg)'">
-        <!-- Foto watermark Kevin -->
-        <div style="position:absolute;inset:0;background-image:url('assets/kevin.png');background-size:cover;background-position:center top;opacity:0.12;border-radius:16px;pointer-events:none"></div>
         <!-- Foto avatar -->
         <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;flex-shrink:0;box-shadow:0 4px 16px rgba(124,58,237,0.3);position:relative;z-index:1;background:var(--accent)">
           <img src="assets/kevin.png" alt="Kevin Vásquez" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none';this.parentElement.innerHTML='<div style=\'width:80px;height:80px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:Orbitron,sans-serif;font-size:1.4rem;font-weight:700;color:white\'>K</div>'">
@@ -806,8 +811,6 @@ footer { background:var(--dark); padding:56px 5% 28px; }
 
       <!-- Alfredo -->
       <div style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:32px 28px;display:flex;gap:22px;align-items:flex-start;transition:all 0.3s;position:relative;overflow:hidden" onmouseover="this.style.borderColor='var(--accent)';this.style.background='#faf8ff'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--bg)'">
-        <!-- Foto watermark Alfredo -->
-        <div style="position:absolute;inset:0;background-image:url('assets/alfredo.png');background-size:cover;background-position:center top;opacity:0.12;border-radius:16px;pointer-events:none"></div>
         <!-- Foto avatar -->
         <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;flex-shrink:0;box-shadow:0 4px 16px rgba(124,58,237,0.3);position:relative;z-index:1;background:var(--accent)">
           <img src="assets/alfredo.png" alt="Alfredo Mendoza" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none';this.parentElement.innerHTML='<div style=\'width:80px;height:80px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:Orbitron,sans-serif;font-size:1.4rem;font-weight:700;color:white\'>A</div>'">
