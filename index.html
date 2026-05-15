@@ -3235,6 +3235,9 @@ function sendLeadAndFinish() {
     lead_name:    botName,
     lead_service: botService,
     lead_contact: botContact,
+    name:         botName,
+    message:      `Servicio: ${botService} | Contacto: ${botContact}`,
+    email:        botContact,
   }).then(() => {
     botMsg(`✅ ¡Solicitud enviada! Ya recibimos tus datos, ${botName}. Te contactamos en menos de 24h.`);
     setTimeout(() => botMsg('También puedes escribirnos directo por WhatsApp:'), 1000);
