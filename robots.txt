@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Disallow: /posts-instagram/
+Disallow: /comparacion-paleta.html
+Disallow: /paletas.html
+Disallow: /mockup-nuevo-estilo.html
+Disallow: /instagram-preview.html
+
+Sitemap: https://somosnovatech.com/sitemap.xml
