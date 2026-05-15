@@ -16,6 +16,31 @@
 <title>NOVATECH by COSA NOVA — Desarrollo Web & Marketing Digital</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="assets/LOGO_sin_novatech.png">
+<link rel="apple-touch-icon" href="assets/LOGO_sin_novatech.png">
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "NOVATECH by COSA NOVA",
+  "alternateName": "NOVATECH",
+  "description": "Agencia de desarrollo web, marketing digital y automatización con IA para empresas en Colombia y Latinoamérica.",
+  "email": "novatech.cosanova@gmail.com",
+  "telephone": "+573001885210",
+  "priceRange": "$$",
+  "serviceType": ["Desarrollo Web", "Marketing Digital", "Automatización e IA", "Bot de WhatsApp", "SEO", "Publicidad Pagada"],
+  "areaServed": ["Colombia", "Venezuela", "Latinoamérica"],
+  "sameAs": [],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+573001885210",
+    "contactType": "customer service",
+    "availableLanguage": "Spanish"
+  }
+}
+</script>
 <!-- EmailJS SDK — para recibir leads del bot por email -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
@@ -1543,6 +1568,356 @@ footer {
   .testi-grid { grid-template-columns: 1fr; }
 }
 
+/* ===== PRECIOS / PLANES ===== */
+#precios { background: var(--dark3); }
+
+.pricing-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 22px;
+  background: rgba(168,85,247,0.07);
+  border: 1px solid rgba(168,85,247,0.2);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  width: fit-content;
+  margin: 0 auto 48px;
+  font-weight: 600;
+}
+
+.pricing-note strong { color: var(--purple); }
+
+.pricing-sub-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--purple);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 1100px;
+  margin: 0 auto 20px;
+}
+
+.pricing-sub-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(168,85,247,0.3), transparent);
+}
+
+/* Web cards */
+.pricing-web-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto 56px;
+}
+
+.pricing-web-card {
+  background: linear-gradient(160deg, rgba(168,85,247,0.07), rgba(59,130,246,0.04));
+  border: 1px solid rgba(168,85,247,0.18);
+  border-radius: 16px;
+  padding: 28px 22px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-web-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s;
+}
+
+@media (hover: hover) {
+  .pricing-web-card:hover::before { transform: scaleX(1); }
+  .pricing-web-card:hover { transform: translateY(-4px); border-color: rgba(168,85,247,0.45); box-shadow: 0 16px 40px rgba(168,85,247,0.12); }
+}
+
+.pwc-icon { font-size: 1.8rem; margin-bottom: 12px; }
+.pwc-name { font-family: 'Orbitron', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; color: #c4b5fd; margin-bottom: 8px; }
+.pwc-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+
+.pwc-features { list-style: none; margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.pwc-features li { font-size: 0.82rem; color: var(--muted); display: flex; align-items: center; gap: 7px; }
+.pwc-features li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--purple); flex-shrink: 0; }
+
+.btn-price {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; padding: 10px 20px;
+  background: rgba(168,85,247,0.1);
+  border: 1px solid rgba(168,85,247,0.3);
+  border-radius: 8px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 1.5px;
+  color: var(--purple); cursor: pointer; transition: all 0.25s;
+  margin-top: auto;
+}
+
+.btn-price:hover { background: rgba(168,85,247,0.2); border-color: var(--purple); color: white; }
+
+/* Marketing plan cards */
+.pricing-mkt-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto 56px;
+}
+
+.pricing-mkt-card {
+  background: rgba(13,13,43,0.6);
+  border: 1px solid rgba(168,85,247,0.18);
+  border-radius: 16px;
+  padding: 32px 22px 24px;
+  position: relative;
+  transition: transform 0.3s, border-color 0.3s;
+  display: flex; flex-direction: column;
+}
+
+.pricing-mkt-card.featured {
+  background: linear-gradient(160deg, rgba(168,85,247,0.12), rgba(59,130,246,0.07));
+  border-color: rgba(168,85,247,0.4);
+  transform: scale(1.04);
+  box-shadow: 0 20px 50px rgba(168,85,247,0.15);
+}
+
+@media (hover: hover) {
+  .pricing-mkt-card:not(.featured):hover { transform: translateY(-4px); border-color: rgba(168,85,247,0.35); }
+}
+
+.pmc-popular {
+  position: absolute;
+  top: -1px; left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--purple), var(--blue));
+  padding: 4px 16px;
+  border-radius: 0 0 8px 8px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.52rem; font-weight: 700; letter-spacing: 2px;
+  color: white; white-space: nowrap;
+}
+
+.pmc-name { font-family: 'Orbitron', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; color: var(--purple); margin-bottom: 4px; }
+.pmc-billing { font-size: 0.72rem; color: #475569; margin-bottom: 18px; line-height: 1.5; }
+
+.pmc-features { list-style: none; flex: 1; display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; }
+.pmc-features li { font-size: 0.82rem; color: var(--muted); display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
+.pmc-check { color: #4ade80; font-size: 0.75rem; flex-shrink: 0; margin-top: 2px; }
+
+.btn-price-featured {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; padding: 11px 20px;
+  background: linear-gradient(135deg, var(--purple), var(--blue));
+  border: none; border-radius: 8px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 1.5px;
+  color: white; cursor: pointer; transition: opacity 0.25s; margin-top: auto;
+}
+
+.btn-price-featured:hover { opacity: 0.85; }
+
+/* Automation plan cards */
+.pricing-auto-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto 56px;
+}
+
+.pricing-auto-card {
+  background: rgba(13,13,43,0.5);
+  border: 1px solid rgba(20,184,166,0.15);
+  border-radius: 16px;
+  padding: 32px 22px 24px;
+  position: relative;
+  transition: all 0.3s;
+  display: flex; flex-direction: column;
+}
+
+.pricing-auto-card.featured {
+  background: linear-gradient(160deg, rgba(20,184,166,0.1), rgba(59,130,246,0.06));
+  border-color: rgba(20,184,166,0.35);
+  transform: scale(1.04);
+  box-shadow: 0 20px 50px rgba(20,184,166,0.1);
+}
+
+@media (hover: hover) {
+  .pricing-auto-card:not(.featured):hover { border-color: rgba(20,184,166,0.3); transform: translateY(-4px); }
+}
+
+.pac-name { font-family: 'Orbitron', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; color: #2dd4bf; margin-bottom: 6px; }
+.pac-name.enterprise { color: #c4b5fd; }
+.pac-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; margin-bottom: 18px; }
+
+.pac-features { list-style: none; flex: 1; display: flex; flex-direction: column; gap: 7px; margin-bottom: 20px; }
+.pac-features li { font-size: 0.82rem; color: var(--muted); display: flex; align-items: flex-start; gap: 7px; line-height: 1.4; }
+.pac-check { color: #2dd4bf; font-size: 0.75rem; flex-shrink: 0; margin-top: 2px; }
+.pac-check.ent { color: #c4b5fd; }
+
+.btn-price-teal {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; padding: 10px 20px;
+  background: rgba(20,184,166,0.1);
+  border: 1px solid rgba(20,184,166,0.3);
+  border-radius: 8px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 1.5px;
+  color: #2dd4bf; cursor: pointer; transition: all 0.25s; margin-top: auto;
+}
+
+.btn-price-teal:hover { background: rgba(20,184,166,0.2); color: white; }
+
+.btn-price-teal.featured { background: linear-gradient(135deg, #14b8a6, #3b82f6); border: none; color: white; }
+.btn-price-teal.featured:hover { opacity: 0.85; }
+
+.btn-price-teal.ent { color: #c4b5fd; border-color: rgba(168,85,247,0.25); background: rgba(168,85,247,0.08); }
+.btn-price-teal.ent:hover { background: rgba(168,85,247,0.18); color: white; }
+
+/* Políticas comerciales */
+.pricing-policies {
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(168,85,247,0.03);
+  border: 1px solid rgba(168,85,247,0.12);
+  border-radius: 16px;
+  padding: 28px 32px;
+}
+
+.pricing-policies-title { font-family: 'Orbitron', sans-serif; font-size: 0.62rem; letter-spacing: 3px; text-transform: uppercase; color: var(--purple); margin-bottom: 18px; }
+
+.policies-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+.policy-item { display: flex; align-items: flex-start; gap: 10px; }
+.policy-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+.policy-title { font-size: 0.82rem; font-weight: 700; color: white; margin-bottom: 3px; font-family: 'Rajdhani', sans-serif; }
+.policy-text { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+
+@media (max-width: 900px) {
+  .pricing-mkt-grid { grid-template-columns: 1fr; }
+  .pricing-auto-grid { grid-template-columns: 1fr; }
+  .pricing-mkt-card.featured { transform: none; }
+  .pricing-auto-card.featured { transform: none; }
+}
+
+@media (max-width: 640px) {
+  .pricing-web-grid { grid-template-columns: 1fr; }
+  .policies-grid { grid-template-columns: 1fr; }
+  .pricing-policies { padding: 20px 16px; }
+}
+
+/* ===== FAQ ===== */
+#faq { background: var(--dark2); }
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.faq-item {
+  background: rgba(168,85,247,0.04);
+  border: 1px solid rgba(168,85,247,0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.faq-item.open { border-color: rgba(168,85,247,0.4); }
+
+.faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  cursor: pointer;
+  gap: 16px;
+  user-select: none;
+}
+
+.faq-q-text {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1.4;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.faq-arrow {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(168,85,247,0.1);
+  border: 1px solid rgba(168,85,247,0.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.35s, background 0.3s;
+  color: var(--purple);
+  font-size: 0.7rem;
+}
+
+.faq-item.open .faq-arrow { transform: rotate(180deg); background: rgba(168,85,247,0.2); }
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  padding: 0 24px;
+}
+
+.faq-item.open .faq-a { max-height: 250px; padding: 0 24px 20px; }
+
+.faq-a p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.75;
+  border-top: 1px solid rgba(168,85,247,0.1);
+  padding-top: 16px;
+}
+
+/* ===== BADGES GARANTÍA / URGENCIA ===== */
+.contact-badges {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.c-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: rgba(168,85,247,0.07);
+  border: 1px solid rgba(168,85,247,0.2);
+  color: var(--muted);
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.c-badge.urgent {
+  background: rgba(239,68,68,0.07);
+  border-color: rgba(239,68,68,0.25);
+  color: #fca5a5;
+}
+
 /* ===== NOVA BOT CHAT WIDGET ===== */
 .nova-chat {
   position: fixed;
@@ -2197,6 +2572,8 @@ footer {
     <li><a href="#automatizacion" style="color:#2dd4bf">Automatización</a></li>
     <li><a href="#why-us">Nosotros</a></li>
     <li><a href="#process">Proceso</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#portfolio">Portafolio</a></li>
     <li><a href="#contacto" class="nav-cta">Cotizar</a></li>
   </ul>
@@ -2212,6 +2589,8 @@ footer {
   <a href="#automatizacion" class="m-link" style="color:#2dd4bf;border-color:rgba(20,184,166,0.3)">Automatización</a>
   <a href="#why-us" class="m-link">Nosotros</a>
   <a href="#process" class="m-link">Proceso</a>
+  <a href="#precios" class="m-link">Precios</a>
+  <a href="#faq" class="m-link">FAQ</a>
   <a href="#portfolio" class="m-link">Portafolio</a>
   <a href="#contacto" class="m-cta">Cotizar Ahora</a>
 </div>
@@ -2327,7 +2706,7 @@ footer {
       <div class="stat-label">% Compromiso</div>
     </div>
     <div class="stat-item reveal stagger-2">
-      <div class="stat-number" data-target="10">0</div>
+      <div class="stat-number" data-target="16">0</div>
       <div class="stat-label">Servicios</div>
     </div>
     <div class="stat-item reveal stagger-3">
@@ -2713,6 +3092,288 @@ footer {
   </div>
 </section>
 
+<!-- PRECIOS / PLANES -->
+<section id="precios">
+  <div class="section-header">
+    <div class="section-tag reveal">— Planes & Precios —</div>
+    <h2 class="section-title reveal stagger-1">Inversión que genera retorno</h2>
+    <p class="section-sub reveal stagger-2">Estructuras claras, sin sorpresas. Cotización personalizada sin compromiso.</p>
+  </div>
+
+  <div class="pricing-note reveal">
+    💱 Todos los precios en USD &nbsp;·&nbsp; <strong>Los adaptamos según tu país y mercado</strong>
+  </div>
+
+  <!-- DESARROLLO WEB -->
+  <div class="pricing-sub-title reveal">Desarrollo Web</div>
+  <div class="pricing-web-grid">
+    <div class="pricing-web-card reveal stagger-1">
+      <div class="pwc-icon">🚀</div>
+      <div class="pwc-name">Landing Page</div>
+      <p class="pwc-desc">Página de aterrizaje optimizada para conversión, ideal para campañas y productos.</p>
+      <ul class="pwc-features">
+        <li>Diseño 100% personalizado</li>
+        <li>Optimizada para conversión</li>
+        <li>Formulario de contacto</li>
+        <li>SEO básico incluido</li>
+        <li>Responsiva para móvil</li>
+      </ul>
+      <button class="btn-price" onclick="document.getElementById('svcModal').classList.add('open')">Cotizar →</button>
+    </div>
+    <div class="pricing-web-card reveal stagger-2">
+      <div class="pwc-icon">🏢</div>
+      <div class="pwc-name">Web Corporativa</div>
+      <p class="pwc-desc">Sitio institucional completo con múltiples secciones, formularios y SEO básico.</p>
+      <ul class="pwc-features">
+        <li>Múltiples secciones</li>
+        <li>Blog integrado</li>
+        <li>Formularios avanzados</li>
+        <li>Panel de administración</li>
+        <li>Optimizada para SEO</li>
+      </ul>
+      <button class="btn-price" onclick="document.getElementById('svcModal').classList.add('open')">Cotizar →</button>
+    </div>
+    <div class="pricing-web-card reveal stagger-3">
+      <div class="pwc-icon">🎨</div>
+      <div class="pwc-name">Portafolio</div>
+      <p class="pwc-desc">Sitio para mostrar trabajos y proyectos con galería interactiva y página de contacto.</p>
+      <ul class="pwc-features">
+        <li>Galería de proyectos</li>
+        <li>Animaciones premium</li>
+        <li>Página de contacto</li>
+        <li>Carga ultrarrápida</li>
+        <li>Diseño único</li>
+      </ul>
+      <button class="btn-price" onclick="document.getElementById('svcModal').classList.add('open')">Cotizar →</button>
+    </div>
+    <div class="pricing-web-card reveal stagger-4">
+      <div class="pwc-icon">🛒</div>
+      <div class="pwc-name">E-commerce</div>
+      <p class="pwc-desc">Tienda online completa con catálogo, carrito de compras y pasarela de pago.</p>
+      <ul class="pwc-features">
+        <li>Catálogo de productos</li>
+        <li>Carrito de compras</li>
+        <li>Pasarela de pago</li>
+        <li>Panel de pedidos</li>
+        <li>Gestión de inventario</li>
+      </ul>
+      <button class="btn-price" onclick="document.getElementById('svcModal').classList.add('open')">Cotizar →</button>
+    </div>
+  </div>
+
+  <!-- MARKETING DIGITAL -->
+  <div class="pricing-sub-title reveal">Marketing Digital · Planes Mensuales</div>
+  <div class="pricing-mkt-grid">
+    <div class="pricing-mkt-card reveal stagger-1">
+      <div class="pmc-name">Básico</div>
+      <div class="pmc-billing">Facturación mensual<br>Permanencia mínima 3 meses</div>
+      <ul class="pmc-features">
+        <li><span class="pmc-check">✓</span> Gestión de redes sociales</li>
+        <li><span class="pmc-check">✓</span> 12 posts mensuales</li>
+        <li><span class="pmc-check">✓</span> Diseño gráfico</li>
+        <li><span class="pmc-check">✓</span> Estrategia de contenido</li>
+      </ul>
+      <button class="btn-price" onclick="document.getElementById('svcModal').classList.add('open')">Consultar precio →</button>
+    </div>
+    <div class="pricing-mkt-card featured reveal stagger-2">
+      <div class="pmc-popular">MÁS POPULAR</div>
+      <div class="pmc-name">Pro</div>
+      <div class="pmc-billing">Facturación mensual<br>Permanencia mínima 3 meses</div>
+      <ul class="pmc-features">
+        <li><span class="pmc-check">✓</span> Todo lo del plan Básico</li>
+        <li><span class="pmc-check">✓</span> Meta Ads + Google Ads</li>
+        <li><span class="pmc-check">✓</span> SEO básico</li>
+        <li><span class="pmc-check">✓</span> Reporte mensual</li>
+        <li><span class="pmc-check">✓</span> Copywriting</li>
+      </ul>
+      <button class="btn-price-featured" onclick="document.getElementById('svcModal').classList.add('open')">Consultar precio →</button>
+    </div>
+    <div class="pricing-mkt-card reveal stagger-3">
+      <div class="pmc-name">Premium</div>
+      <div class="pmc-billing">Facturación mensual<br>Permanencia mínima 3 meses</div>
+      <ul class="pmc-features">
+        <li><span class="pmc-check">✓</span> Todo lo del plan Pro</li>
+        <li><span class="pmc-check">✓</span> Email marketing</li>
+        <li><span class="pmc-check">✓</span> Branding y estrategia</li>
+        <li><span class="pmc-check">✓</span> Remarketing</li>
+        <li><span class="pmc-check">✓</span> TikTok Ads</li>
+        <li><span class="pmc-check">✓</span> Soporte prioritario</li>
+      </ul>
+      <button class="btn-price" onclick="document.getElementById('svcModal').classList.add('open')">Consultar precio →</button>
+    </div>
+  </div>
+
+  <!-- AUTOMATIZACIÓN & IA -->
+  <div class="pricing-sub-title reveal" style="color:#2dd4bf;--after-color:rgba(20,184,166,0.3)">Automatización & IA</div>
+  <div class="pricing-auto-grid">
+    <div class="pricing-auto-card reveal stagger-1">
+      <div class="pmc-popular" style="background:rgba(20,184,166,0.12);border:1px solid rgba(20,184,166,0.3);color:#2dd4bf;">STARTER</div>
+      <div class="pac-name">Starter</div>
+      <p class="pac-desc">Ideal para empezar a automatizar la captación de leads con IA.</p>
+      <ul class="pac-features">
+        <li><span class="pac-check">✓</span> Bot de WhatsApp básico</li>
+        <li><span class="pac-check">✓</span> Respuestas automáticas 24/7</li>
+        <li><span class="pac-check">✓</span> Captura de leads</li>
+        <li><span class="pac-check">✓</span> Integración con tu web</li>
+      </ul>
+      <button class="btn-price-teal" onclick="document.getElementById('svcModal').classList.add('open')">Consultar →</button>
+    </div>
+    <div class="pricing-auto-card featured reveal stagger-2">
+      <div class="pmc-popular">MÁS POPULAR</div>
+      <div class="pac-name">Pro</div>
+      <p class="pac-desc">Automatización completa del proceso de ventas de principio a fin.</p>
+      <ul class="pac-features">
+        <li><span class="pac-check">✓</span> Todo lo del plan Starter</li>
+        <li><span class="pac-check">✓</span> CRM integrado</li>
+        <li><span class="pac-check">✓</span> Funnels automatizados</li>
+        <li><span class="pac-check">✓</span> Auto-respuestas en redes</li>
+        <li><span class="pac-check">✓</span> Chatbot para tu web</li>
+      </ul>
+      <button class="btn-price-teal featured" onclick="document.getElementById('svcModal').classList.add('open')">Consultar →</button>
+    </div>
+    <div class="pricing-auto-card reveal stagger-3">
+      <div class="pmc-popular" style="background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.3);color:#c4b5fd;">ENTERPRISE</div>
+      <div class="pac-name enterprise" style="color:#c4b5fd">Enterprise</div>
+      <p class="pac-desc">Ecosistema digital completamente automatizado para escalar sin límites.</p>
+      <ul class="pac-features">
+        <li><span class="pac-check ent">✓</span> Todo lo del plan Pro</li>
+        <li><span class="pac-check ent">✓</span> Reportes automáticos</li>
+        <li><span class="pac-check ent">✓</span> Zapier / Make integrado</li>
+        <li><span class="pac-check ent">✓</span> Múltiples integraciones API</li>
+        <li><span class="pac-check ent">✓</span> Soporte dedicado</li>
+      </ul>
+      <button class="btn-price-teal ent" onclick="document.getElementById('svcModal').classList.add('open')">Consultar →</button>
+    </div>
+  </div>
+
+  <!-- POLÍTICAS COMERCIALES -->
+  <div class="pricing-policies reveal">
+    <div class="pricing-policies-title">Políticas Comerciales</div>
+    <div class="policies-grid">
+      <div class="policy-item">
+        <div class="policy-icon">💵</div>
+        <div>
+          <div class="policy-title">Moneda</div>
+          <p class="policy-text">Todos los precios en USD para garantizar estabilidad frente a la inflación.</p>
+        </div>
+      </div>
+      <div class="policy-item">
+        <div class="policy-icon">📅</div>
+        <div>
+          <div class="policy-title">Contrato Mínimo</div>
+          <p class="policy-text">Planes de marketing con permanencia mínima de 3 meses.</p>
+        </div>
+      </div>
+      <div class="policy-item">
+        <div class="policy-icon">💳</div>
+        <div>
+          <div class="policy-title">Forma de Pago</div>
+          <p class="policy-text">Proyectos web: 50% adelantado, 50% al entregar. Marketing: mensual anticipado.</p>
+        </div>
+      </div>
+      <div class="policy-item">
+        <div class="policy-icon">📋</div>
+        <div>
+          <div class="policy-title">Cotización Personalizada</div>
+          <p class="policy-text">Proyectos especiales y clientes internacionales tienen precio a convenir según mercado.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-header">
+    <div class="section-tag reveal">— Preguntas Frecuentes —</div>
+    <h2 class="section-title reveal stagger-1">Todo lo que necesitas saber</h2>
+    <p class="section-sub reveal stagger-2">Respondemos las dudas más comunes antes de que tengas que preguntar.</p>
+  </div>
+  <div class="faq-list">
+
+    <div class="faq-item reveal stagger-1">
+      <div class="faq-q">
+        <span class="faq-q-text">¿Cuánto tiempo tarda en entregar un proyecto?</span>
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        <p>Depende del proyecto. Una landing page tarda entre 5-7 días hábiles, una web corporativa entre 10-15 días y una tienda online entre 15-20 días. Siempre te damos un plazo exacto antes de iniciar para que puedas planificar tu lanzamiento.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal stagger-2">
+      <div class="faq-q">
+        <span class="faq-q-text">¿Necesito tener fotos y textos listos antes de empezar?</span>
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        <p>No necesariamente. Podemos comenzar con tu información básica e ir completando el contenido durante el proceso. También ofrecemos servicios de copywriting (redacción de textos persuasivos) y te indicamos exactamente qué fotos necesitas y de qué tamaño.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal stagger-3">
+      <div class="faq-q">
+        <span class="faq-q-text">¿El diseño es personalizado o usan plantillas?</span>
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        <p>Cada proyecto es diseñado desde cero según tu marca, colores, industria e identidad visual. No usamos plantillas genéricas. El objetivo es que tu web sea única y represente exactamente tu negocio.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal stagger-4">
+      <div class="faq-q">
+        <span class="faq-q-text">¿El bot de WhatsApp funciona con mi número actual?</span>
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        <p>Sí. El bot funciona a través de WhatsApp Business con tu número actual, sin necesidad de contratar líneas adicionales. Configuramos todo el flujo de conversación según tus servicios y lo integramos con tu CRM si lo tienes.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal stagger-5">
+      <div class="faq-q">
+        <span class="faq-q-text">¿Puedo pedir cambios después de entregar el proyecto?</span>
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        <p>Sí. Cada proyecto incluye rondas de revisión antes de la entrega final para asegurarnos de que todo esté exactamente como lo necesitas. Una vez entregado, ofrecemos planes de mantenimiento mensual para actualizaciones, cambios de contenido y soporte técnico.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal stagger-6">
+      <div class="faq-q">
+        <span class="faq-q-text">¿Trabajan con clientes fuera de Colombia?</span>
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        <p>Absolutamente. Trabajamos con clientes en toda Latinoamérica y cualquier parte del mundo. Todo el proceso es 100% remoto — reuniones por videollamada, entregas por drive y comunicación por WhatsApp o email.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">
+        <span class="faq-q-text">¿Cuáles son las formas de pago?</span>
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        <p>Aceptamos transferencia bancaria, Nequi, Daviplata y pagos internacionales vía PayPal o transferencia SWIFT. El esquema de pago habitual es 50% al inicio del proyecto y 50% a la entrega. Para proyectos grandes podemos acordar un plan en cuotas.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">
+        <span class="faq-q-text">¿Qué pasa si no quedo satisfecho con el resultado?</span>
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        <p>Trabajamos contigo hasta que el resultado sea exactamente lo que necesitas. Hacemos todas las revisiones necesarias dentro del alcance del proyecto. Nuestro objetivo es que quedes 100% satisfecho — de hecho, la mayoría de nuestros clientes nos recomiendan por eso.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- PORTFOLIO -->
 <section id="portfolio">
   <div class="section-header">
@@ -2744,23 +3405,25 @@ footer {
       </div>
     </div>
 
-    <div class="portfolio-card placeholder reveal stagger-2">
+    <div class="portfolio-card reveal stagger-2">
       <div class="portfolio-preview">
         <div class="portfolio-preview-grad" style="background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 60%, #6366f1 100%);"></div>
-        <div class="placeholder-lock">
-          <div class="plus-icon">+</div>
-          <div class="portfolio-preview-label">Próximo proyecto</div>
-        </div>
+        <div class="portfolio-preview-label">cosanovave.github.io/cosanova</div>
       </div>
       <span class="portfolio-badge">E-commerce</span>
       <div class="portfolio-body">
-        <h3>Tu tienda online aquí</h3>
-        <p>Tienda completa con pasarela de pago, gestión de inventario y panel de pedidos 24/7.</p>
+        <h3>COSA NOVA Store</h3>
+        <p>Tienda online Colombia-Venezuela con catálogo por categorías, apartado con abonos, pagos en USDT/Zelle y calculadora BCV en vivo.</p>
         <div class="portfolio-tags">
           <span class="tag">E-commerce</span>
           <span class="tag">Pagos</span>
-          <span class="tag">SEO</span>
+          <span class="tag">WhatsApp</span>
+          <span class="tag">Responsive</span>
         </div>
+        <a href="https://cosanovave.github.io/cosanova/" target="_blank" rel="noopener noreferrer" class="portfolio-link">
+          Ver proyecto
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
       </div>
     </div>
 
@@ -2866,6 +3529,11 @@ footer {
     <p class="section-sub reveal stagger-2">Cuéntanos sobre tu proyecto y te enviamos una cotización personalizada sin costo.</p>
   </div>
   <div class="contact-inner">
+    <div class="contact-badges reveal">
+      <div class="c-badge">✅ Garantía de satisfacción total</div>
+      <div class="c-badge">💬 Respuesta en menos de 24h</div>
+      <div class="c-badge urgent">🔥 Cupos limitados este mes</div>
+    </div>
     <div class="contact-cta-wrap reveal">
       <button onclick="document.getElementById('svcModal').classList.add('open')" class="btn-cta-form">
         Solicitar Cotización Gratis
@@ -3287,6 +3955,16 @@ function handleQR(opt) {
     askNameThen(botServiceLabels[opt]);
   }
 }
+
+// ===== FAQ TOGGLE =====
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
 
 // Exit intent
 let exitShown = false;
