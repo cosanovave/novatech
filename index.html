@@ -30,6 +30,32 @@
   gtag('js', new Date());
   gtag('config', 'G-56XHNX96Q6');
 </script>
+<script>
+// Eventos de conversión (marcarlos como "evento clave" en GA4 y Meta)
+(function(){
+  function track(name, params){
+    try{ if(window.gtag) gtag('event', name, params||{}); }catch(e){}
+    try{ if(window.fbq) fbq('track', name==='generate_lead'?'Lead':'Contact'); }catch(e){}
+  }
+  window.ntTrack = track;
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href]'); if(!a) return;
+    var h = a.getAttribute('href')||'';
+    if(h.indexOf('wa.me/')>-1) track('contacto_whatsapp', {link_url:h.split('?')[0]});
+    else if(h.indexOf('forms.gle')>-1) track('clic_formulario', {link_url:h});
+    else if(h.indexOf('mailto:')===0) track('contacto_email', {});
+  }, true);
+  var _open = window.open;
+  window.open = function(u){ if(String(u).indexOf('wa.me/')>-1) track('contacto_whatsapp', {link_url:String(u).split('?')[0]}); return _open.apply(window, arguments); };
+})();
+</script>
+<!-- Píxel de Meta: reemplazar PIXEL_ID por el ID real y quitar los comentarios -->
+<!--
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','PIXEL_ID');fbq('track','PageView');
+</script>
+-->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700;800&family=Great+Vibes&family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -682,7 +708,7 @@ footer { background:var(--dark); padding:56px 5% 28px; }
 <div id="scroll-progress"></div>
 
 <!-- LANGUAGE MODAL -->
-<div id="nt-lang-overlay">
+<div id="nt-lang-overlay" class="nt-hid">
   <div class="nt-lm-box">
     <div class="nt-lm-logo">NOVA<span class="mark">TECH</span></div>
     
@@ -753,12 +779,12 @@ footer { background:var(--dark); padding:56px 5% 28px; }
       </div>
     </div>
     <div class="hero-card reveal-right">
-      <div class="hero-card-label">Métricas recientes</div>
+      <div class="hero-card-label">Por qué NOVATECH</div>
       <div class="hero-accent-line"></div>
       <div class="metric-grid">
-        <div class="metric"><div class="metric-val"><span class="av">+247%</span></div><div class="metric-lbl">Conversión Ads</div></div>
-        <div class="metric"><div class="metric-val">98</div><div class="metric-lbl">Score SEO</div></div>
-        <div class="metric"><div class="metric-val">0.8s</div><div class="metric-lbl">Carga Web</div></div>
+        <div class="metric"><div class="metric-val"><span class="av">CO · US</span></div><div class="metric-lbl">Colombia y EE. UU.</div></div>
+        <div class="metric"><div class="metric-val">ES · EN</div><div class="metric-lbl">Atención bilingüe</div></div>
+        <div class="metric"><div class="metric-val">&lt;24h</div><div class="metric-lbl">Respuesta</div></div>
         <div class="metric"><div class="metric-val"><span class="at">24/7</span></div><div class="metric-lbl">Bot activo</div></div>
       </div>
       <div class="hero-card-note">Tecnología + Estrategia = Resultados reales para tu negocio.</div>
@@ -768,7 +794,7 @@ footer { background:var(--dark); padding:56px 5% 28px; }
 
 <!-- CLIENTS BAR -->
 <div class="clients-bar">
-  <div class="clients-label">Trabajan con nosotros</div>
+  <div class="clients-label">Lo que hacemos</div>
   <div class="clients-track-wrap">
     <div class="clients-track">
       <div class="client-name">Desarrollo Web</div><div class="client-name">Marketing Digital</div><div class="client-name">Automatización & IA</div><div class="client-name">Bot de WhatsApp</div><div class="client-name">SEO Avanzado</div><div class="client-name">Meta Ads · Google Ads</div><div class="client-name">E-commerce</div><div class="client-name">Funnels Automatizados</div><div class="client-name">Diseño Premium</div><div class="client-name">Resultados Medibles</div><div class="client-name">Soporte Continuo</div><div class="client-name">Atención Internacional</div>
@@ -1452,9 +1478,9 @@ heroTag:'Agencia Digital · Atención Internacional',
 heroTitle:'Hacemos crecer<br>tu negocio <span class="mark">digital.</span>',
 heroSub:'Webs profesionales, marketing de alto rendimiento y automatización con IA. Resultados medibles desde el primer mes.',
 heroBtnPrimary:'Solicitar Cotización',heroBtnSecondary:'Ver Servicios',
-heroCardLabel:'Métricas recientes',heroMetrics:['Conversión Ads','Score SEO','Carga Web','Bot activo'],
+heroCardLabel:'Por qué NOVATECH',heroMetrics:['Colombia y EE. UU.','Atención bilingüe','Respuesta','Bot activo'],
 heroCardNote:'Tecnología + Estrategia = Resultados reales para tu negocio.',
-clientsLabel:'Trabajan con nosotros',
+clientsLabel:'Lo que hacemos',
 clientsItems:['Desarrollo Web','Marketing Digital','Automatización & IA','Bot de WhatsApp','SEO Avanzado','Meta Ads · Google Ads','E-commerce','Funnels Automatizados','Diseño Premium','Resultados Medibles','Soporte Continuo','Atención Internacional'],
 webTag:'Desarrollo Web',webTitle:'Webs que generan resultados',
 webSub:'Diseño y desarrollo de sitios profesionales optimizados para convertir visitantes en clientes.',
@@ -1543,9 +1569,9 @@ heroTag:'Digital Agency · International Service',
 heroTitle:'We grow your<br>digital <span class="mark">business.</span>',
 heroSub:'Professional websites, high-performance marketing and AI automation. Measurable results from day one.',
 heroBtnPrimary:'Request a Quote',heroBtnSecondary:'View Services',
-heroCardLabel:'Recent metrics',heroMetrics:['Ads Conversion','SEO Score','Page Load','Bot active'],
+heroCardLabel:'Why NOVATECH',heroMetrics:['Colombia & USA','Bilingual team','Reply time','Bot active'],
 heroCardNote:'Technology + Strategy = Real results for your business.',
-clientsLabel:'Working with us',
+clientsLabel:'What we do',
 clientsItems:['Web Development','Digital Marketing','Automation & AI','WhatsApp Bot','Advanced SEO','Meta Ads · Google Ads','E-commerce','Automated Funnels','Premium Design','Measurable Results','Ongoing Support','International Service'],
 webTag:'Web Development',webTitle:'Websites that generate results',
 webSub:'Design and development of professional sites optimized to convert visitors into clients.',
@@ -1841,7 +1867,7 @@ window.showWABtn=function(){
 };
 window.sendLeadAndFinish=function(){
   emailjs.send(EJS_SERVICE_ID,EJS_TEMPLATE_ID,{lead_name:botName,lead_service:botService,lead_contact:botContact,name:botName,message:'Servicio: '+botService+' | Contacto: '+botContact,email:botContact,time:new Date().toLocaleString('es-CO')})
-  .then(()=>{botMsg(_BT.botSent(botName));setTimeout(()=>botMsg(_BT.botWaFollow),1000);setTimeout(showWABtn,1800);})
+  .then(()=>{window.ntTrack&&ntTrack('generate_lead',{servicio:botService});botMsg(_BT.botSent(botName));setTimeout(()=>botMsg(_BT.botWaFollow),1000);setTimeout(showWABtn,1800);})
   .catch(err=>{const detail=err?(err.text||err.status||JSON.stringify(err)):'sin detalle';botMsg('⚠️ Error: '+detail);setTimeout(()=>botMsg(_BT.botWaFollow),600);setTimeout(showWABtn,1200);});
 };
 
@@ -1862,8 +1888,10 @@ window.setLang=function(lang){
 
 // Init — show modal or apply saved preference
 const saved=localStorage.getItem('nt-lang');
-if(saved&&T[saved]){q('#nt-lang-overlay').classList.add('nt-hid');updateUI(T[saved]);}
-// else modal stays visible by default
+const auto=(navigator.language||'es').toLowerCase().startsWith('en')?'en':'es';
+const lang0=(saved&&T[saved])?saved:auto;
+_BT=T[lang0];updateUI(T[lang0]);
+// El cambio de idioma sigue disponible desde el botón del menú (openLangModal)
 })();
 </script>
 </body>
