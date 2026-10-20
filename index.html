@@ -442,6 +442,10 @@ nav.scrolled { box-shadow:0 2px 20px rgba(0,0,0,0.08); }
 .port-card.placeholder .port-top { opacity:0.5; }
 .port-card.placeholder .port-bottom { opacity:0.4; }
 .port-card.placeholder .port-divider { background:var(--border); }
+.port-top--logo { background:#ffffff; border-bottom:1px solid var(--border); }
+.port-top--logo::before, .port-top--logo::after { display:none; }
+.port-logo-img { position:relative; z-index:1; max-width:90%; max-height:150px; object-fit:contain; transition:transform 0.3s; }
+.port-card:hover .port-logo-img { transform:scale(1.04); }
 
 /* ── TESTIMONIOS ── */
 .testi-section { background:var(--white); border-top:1px solid var(--border); }
@@ -1044,16 +1048,8 @@ footer { background:var(--dark); padding:56px 5% 28px; }
 
       <!-- Alejandra Pérez -->
       <div class="port-card reveal stagger-1">
-        <div class="port-top">
-          <div class="port-logo-name" style="display:flex;flex-direction:column;align-items:center;gap:6px">
-            <!-- Script manuscrita como su logo -->
-            <div style="font-family:'Great Vibes',cursive;font-size:2.8rem;color:rgba(196,165,253,0.95);line-height:1;letter-spacing:1px">Dra. Alejandra Pérez</div>
-            <!-- Línea decorativa -->
-            <div style="width:60px;height:1px;background:rgba(196,165,253,0.3);margin:2px 0"></div>
-            <!-- Subtítulo en caps espaciadas como el original -->
-            <div style="font-family:'Inter',sans-serif;font-size:0.62rem;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,0.5)">Consultorio Médico</div>
-            <div style="font-family:'Inter',sans-serif;font-size:0.52rem;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:rgba(196,165,253,0.4)">Medicina General y Estética</div>
-          </div>
+        <div class="port-top port-top--logo">
+          <img class="port-logo-img" src="assets/clientes/alejandra-perez.png" alt="Logo Dra. Alejandra Pérez · Consultorio Médico" loading="lazy">
         </div>
         <div class="port-divider"></div>
         <div class="port-bottom">
@@ -1065,17 +1061,8 @@ footer { background:var(--dark); padding:56px 5% 28px; }
 
       <!-- COSA NOVA Store -->
       <div class="port-card reveal stagger-2">
-        <div class="port-top">
-          <div class="port-logo-name" style="display:flex;flex-direction:column;align-items:center;gap:4px">
-            <!-- Ícono bolsa de compras -->
-            <div style="font-size:2rem;margin-bottom:2px">🛍️</div>
-            <!-- COSA NOVA en Bebas Neue ultra-bold como el original -->
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:3rem;line-height:0.9;letter-spacing:3px;background:linear-gradient(135deg,#c4b5fd,#a78bfa,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">COSA NOVA</div>
-            <!-- Subtítulo -->
-            <div style="font-family:'Inter',sans-serif;font-size:0.58rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(196,165,253,0.5);margin-top:2px">Comercializadora</div>
-            <!-- Tagline como en el original -->
-            <div style="font-family:'Inter',sans-serif;font-size:0.65rem;font-weight:800;font-style:italic;letter-spacing:1px;color:rgba(255,255,255,0.35);margin-top:4px">¡Todo en un solo lugar!</div>
-          </div>
+        <div class="port-top port-top--logo">
+          <img class="port-logo-img" src="assets/clientes/cosa-nova.png" alt="Logo Cosa Nova Comercializadora" loading="lazy">
         </div>
         <div class="port-divider"></div>
         <div class="port-bottom">
@@ -1087,12 +1074,8 @@ footer { background:var(--dark); padding:56px 5% 28px; }
 
       <!-- Yahweh Company -->
       <div class="port-card reveal stagger-3">
-        <div class="port-top">
-          <div class="port-logo-name" style="display:flex;flex-direction:column;align-items:center;gap:4px">
-            <div style="font-size:2rem;margin-bottom:2px">🛒</div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:2.6rem;line-height:0.9;letter-spacing:2px;background:linear-gradient(135deg,#c4b5fd,#a78bfa,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">YAHWEH COMPANY</div>
-            <div style="font-family:'Inter',sans-serif;font-size:0.58rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(196,165,253,0.5);margin-top:2px">Tecnología · Moda · Cuidado personal</div>
-          </div>
+        <div class="port-top port-top--logo">
+          <img class="port-logo-img" src="assets/clientes/yahweh-company.png" alt="Logo Yahweh Company" loading="lazy">
         </div>
         <div class="port-divider"></div>
         <div class="port-bottom">
